@@ -17,6 +17,6 @@ jobs:
 
       - name: checks result
         shell: bash
-        run: echo "repo: ${REPO}"
+        run: echo "repo: ${REPO_BIG_TIME}"
         env:
-          REPO: "some-static-string"
+          REPO_BIG_TIME: "some-static-string"
