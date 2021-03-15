@@ -1,9 +1,9 @@
-name: Publish documentation to GitHub Pages
+name: Checks up for Repo thingies
 on:
   workflow_dispatch:
   push:
     branches:
-      - test-action-reponame
+      - test-action-reponame2
 
 jobs:
   publish:
@@ -18,5 +18,5 @@ jobs:
       - name: checks result
         shell: bash
         env:
-          REPO: ${{ steps.clrepo.outputs.repository_name }}
+          REPO: "some-static-string"
         run: echo "repo: ${REPO}"
