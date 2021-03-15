@@ -10,24 +10,13 @@ jobs:
     name: Publish to GitHub Pages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 5.0.x
-
-      - name: Make a static copy of the repository to reference the action
+      - name: Clean repo name
+        id: clrepo
         shell: bash
-        run: |
-          git clone . "../this-very-action"
+        run: echo "::set-output name=repository_name::${GITHUB_REPOSITORY#${{ github.repository_owner }}/}"
 
-      - name: Build documentation and push back to Git
-        uses: ./../this-very-action/
-        with:
-          project-name: "Retype GitHub Action"
-          overwrite-branch: true
-
-      - name: Documentation publish report
+      - name: checks result
         shell: bash
-        run: |
-          echo "Published website available at: https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY##*/}/"
+        env:
+          REPO: ${{ steps.clrepo.outputs.repository_name }}
+        run: echo "repo: ${REPO}"
