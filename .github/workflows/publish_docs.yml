@@ -17,6 +17,6 @@ jobs:
 
       - name: checks result
         shell: bash
-        run: echo "hello world"
+        run: echo "repo - ${REPO_BIG_TIME}"
         env:
-          REPO_BIG_TIME: "some-static-string"
+          REPO_BIG_TIME: ${{ steps.clrepo.outputs.repository_name }}
