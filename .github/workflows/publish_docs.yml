@@ -17,6 +17,6 @@ jobs:
 
       - name: checks result
         shell: bash
+        run: echo "repo: ${REPO}"
         env:
           REPO: "some-static-string"
-        run: echo "repo: ${REPO}"
